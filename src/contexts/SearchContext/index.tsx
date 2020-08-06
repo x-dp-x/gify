@@ -1,8 +1,9 @@
 import React, { ReactNode, useState } from 'react';
+import { SearchResult } from '../../types/searchResults';
 
 interface SearchContext {
-  searchResults: [];
-  setSearchResults(value: []): void;
+  searchResults: SearchResult[] | [];
+  setSearchResults(value: SearchResult[] | []): void;
 }
 
 export const SearchContext = React.createContext<SearchContext>({
@@ -15,7 +16,7 @@ interface SearchProviderProps {
 }
 
 export const SearchProvider = ({ children }: SearchProviderProps) => {
-  const [searchResults, setSearchResults] = useState<[]>([]);
+  const [searchResults, setSearchResults] = useState<SearchResult[] | []>([]);
 
   return (
     <SearchContext.Provider

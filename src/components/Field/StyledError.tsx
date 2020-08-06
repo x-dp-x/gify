@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { colors, textSizes } from '../../constants';
-import { media } from '../../utils';
 
 export const StyledError = styled.p`
   display: block;
@@ -10,9 +9,4 @@ export const StyledError = styled.p`
   position: absolute;
   top: -25px;
   right: 10px;
-
-  ${media.tablet`
-    top: unset;
-    bottom: -5px;
-  `}
 `;

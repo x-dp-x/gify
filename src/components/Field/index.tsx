@@ -34,7 +34,7 @@ export const Field = ({ type, name, placeholder }: FieldProps) => (
       component={CustomField}
       placeholder={placeholder}
     />
-    <ErrorMessage name={name} component={StyledError} />
+    <ErrorMessage data-testid="error" name={name} component={StyledError} />
   </Container>
 );
 
