@@ -1,7 +1,3 @@
-export interface SearchResultsProps {
-  searchResults: SearchResult[];
-}
-
 export interface SearchResult {
   title: string;
   id: string;

@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
-import { SearchResult } from '../../types/searchResults';
+import { SearchResult } from '../../types/searchResult';
 
-interface FavouritesContextProps {
+export interface FavouritesContextProps {
   favourites: SearchResult[] | [];
   setFavourites(value: SearchResult[] | []): void;
 }

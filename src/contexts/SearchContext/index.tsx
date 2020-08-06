@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { SearchResult } from '../../types/searchResults';
+import { SearchResult } from '../../types/searchResult';
 
 interface SearchContext {
   searchResults: SearchResult[] | [];

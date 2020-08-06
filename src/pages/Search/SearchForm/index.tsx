@@ -45,6 +45,7 @@ export const SearchForm = ({
       if (data) {
         setSearchResults(data);
       } else {
+        // TODO: Handle error response with UI
         alert(response);
       }
     }}

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useLocation } from 'wouter';
 import { Link } from '../Link';
 import { paths, colors } from '../../constants';
+import { SearchResult } from '../../types/searchResult';
 
 const Wrapper = styled.nav`
   display: flex;
@@ -28,7 +29,11 @@ interface isActiveTypes {
 const isActive = ({ currentPath, pathToCheck }: isActiveTypes) =>
   currentPath === pathToCheck;
 
-export const Nav = () => {
+interface NavProps {
+  favourites: SearchResult[];
+}
+
+export const Nav = ({ favourites }: NavProps) => {
   const [location] = useLocation();
   const currentPath = location;
   return (
@@ -41,13 +46,15 @@ export const Nav = () => {
           Search
         </Link>
       </NavLink>
-      <NavLink
-        active={isActive({ currentPath, pathToCheck: paths.favourites })}
-      >
-        <Link href={paths.favourites} color="blue" size="medium">
-          Favourites
-        </Link>
-      </NavLink>
+      {favourites.length > 0 ? (
+        <NavLink
+          active={isActive({ currentPath, pathToCheck: paths.favourites })}
+        >
+          <Link href={paths.favourites} color="blue" size="medium">
+            Favourites
+          </Link>
+        </NavLink>
+      ) : null}
     </Wrapper>
   );
 };

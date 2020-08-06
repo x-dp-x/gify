@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import { useFavourites } from '../../hooks/useFavourites';
 import { colors } from '../../constants';
 import { Header } from '../Header';
 import { Nav } from '../Nav';
@@ -28,10 +29,13 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-export const Layout = ({ children }: LayoutProps) => (
-  <Wrapper>
-    <Header />
-    <Nav />
-    {children}
-  </Wrapper>
-);
+export const Layout = ({ children }: LayoutProps) => {
+  const { favourites } = useFavourites();
+  return (
+    <Wrapper>
+      <Header />
+      <Nav favourites={favourites} />
+      {children}
+    </Wrapper>
+  );
+};

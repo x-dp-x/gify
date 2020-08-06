@@ -4,17 +4,20 @@ import { Reset, Body, Layout } from './components/Layout';
 import { Search } from './pages/Search';
 import { Favourites } from './pages/Favourites';
 import { SearchProvider } from './contexts/SearchContext';
+import { FavouritesProvider } from './contexts/FavouritesContext';
 import { paths } from './constants/paths';
 
 export const App = () => (
-  <Layout>
-    <Reset />
-    <Body />
+  <FavouritesProvider>
     <SearchProvider>
-      <Router>
-        <Route path={paths.search} component={Search} />
-        <Route path={paths.favourites} component={Favourites} />
-      </Router>
+      <Reset />
+      <Body />
+      <Layout>
+        <Router>
+          <Route path={paths.search} component={Search} />
+          <Route path={paths.favourites} component={Favourites} />
+        </Router>
+      </Layout>
     </SearchProvider>
-  </Layout>
+  </FavouritesProvider>
 );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { SearchResults } from './';
 
 const firstImage = {
@@ -24,8 +25,10 @@ const secondImage = {
     },
   },
 };
+
 const defaultProps = {
   searchResults: [firstImage, secondImage],
+  addToFavourites: jest.fn(),
 };
 
 test('should render a list of gifs with the correct image and size', () => {
@@ -46,4 +49,13 @@ test('should render a list of gifs with the correct image and size', () => {
     second.height,
   );
   expect(getByTestId('search-image-2').getAttribute('src')).toEqual(second.url);
+});
+
+test('should call addToFavourites when selecting a favourite', () => {
+  const { getByRole } = render(
+    <SearchResults {...defaultProps} searchResults={[firstImage]} />,
+  );
+  const button = getByRole('button', { name: 'Save' });
+  userEvent.click(button);
+  expect(defaultProps.addToFavourites).toHaveBeenCalledWith(firstImage);
 });

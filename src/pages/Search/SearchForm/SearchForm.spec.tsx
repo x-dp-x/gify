@@ -12,6 +12,8 @@ jest.mock('../../../utils', () => ({
     .mockImplementation(() => Promise.resolve({ data: { x: 'y' } })),
 }));
 
+// TODO: Add tests for validation
+
 const defaultProps = {
   setSearchResults: jest.fn(),
   clearSearchResults: jest.fn(),
